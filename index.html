@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glory Travel Agency Management Platform</title>
+    <style>
+        /* CSS from your uploaded files has been integrated here for consistent styling */
+        :root {
+            --navbar-bg-start: #2c3e50;
+            --navbar-bg-end: #415a77;
+            --text-color-light: #ecf0f1;
+            --text-color-dark: #34495e;
+            --text-color-accent: #3498db;
+            --hover-bg-color: rgba(255, 255, 255, 0.15);
+            --border-radius-sm: 4px;
+            --border-radius-lg: 20px;
+            --shadow-strong: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --font-stack: 'Inter', 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: var(--text-color-dark);
+            line-height: 1.6;
+        }
+
+        .navbar-container {
+            background-image: linear-gradient(to right, var(--navbar-bg-start), var(--navbar-bg-end));
+            padding: 10px 25px;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar-brand a {
+            color: var(--text-color-light);
+            font-size: 26px;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item a {
+            color: var(--text-color-light);
+            text-decoration: none;
+            padding: 12px 18px;
+            font-size: 17px;
+            font-weight: 500;
+            display: block;
+        }
+        
+        /* General page layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #6c757d;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--text-color-accent);
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #2b7bb8;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 3rem 0;
+        }
+
+        .features-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-color-dark);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .features-section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--text-color-accent);
+            border-radius: 2px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--text-color-accent);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--navbar-bg-start);
+            margin-bottom: 1rem;
+        }
+
+        /* Screenshots Gallery */
+        .gallery-section {
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, fr));
+            gap: 5rem;
+        }
+
+        .screenshot-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.02);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            text-align: center;
+            background-image: linear-gradient(to right, var(--navbar-bg-start), var(--navbar-bg-end));
+            color: #ffffff;
+            padding: 4rem 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar-container">
+        <nav class="main-nav">
+            <div class="navbar-brand">
+                <a href="#">Glory Travel Agency</a>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#features-section">Features</a></li>
+                <li class="nav-item"><a href="#gallery-section">Gallery</a></li>
+                <li class="nav-item"><a href="#contact-section">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="hero-section">
+        <h1>Revolutionize Your Agency's Operations</h1>
+        <p>I have developed a comprehensive web platform designed to significantly enhance the operational efficiency and service delivery of travel agencies. Our platform is more than just a tool; it's a strategic asset for your business.</p>
+        <a href="#contact-section" class="cta-button">Schedule a Demo</a>
+    </section>
+
+    <section id="features-section" class="container">
+        <h2>Key Features and Benefits</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Centralized Ticket & Visa Management</h3>
+                <p>Efficiently track and manage all ticket and visa-related information, including issuance, pricing, void, refund, and reissue statuses. The intuitive interface reduces manual errors and saves valuable time.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Advanced Data Filtering</h3>
+                <p>Find specific information quickly and easily by using various filter parameters available in the filtering panel. This capability saves time and enhances efficiency when searching for customer or ticket details.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Comprehensive Customer Database</h3>
+                <p>Maintain detailed client profiles with contact information, travel preferences, passport details, and loyalty program numbers. This ensures personalized service and quick access to critical data.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Integrated To-Do List</h3>
+                <p>Empower your team with a built-in, customizable to-do list for daily operations. This feature allows for assigning tasks, setting topics, and tracking responsibilities, ensuring no critical item is missed and workflows are optimized.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Financial Tracking</h3>
+                <p>Gain clear insights into your customers' financial ledgers with automated tracking of ticket prices, visas, receipts, and advance payments. This simplifies accounting and provides a real-time overview of your finances.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure Document Management</h3>
+                <p>Safely store and access important documents like ticket PDFs and passport images, linked directly to customer and ticket records. The system ensures easy retrieval and secure handling of sensitive information.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Offline Capability</h3>
+                <p>Designed with reliability in mind, the platform's core functionalities can operate efficiently even without a constant internet connection, ensuring business continuity in diverse operational environments.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Generate Excel Reports</h3>
+                <p>Easily export your data to an Excel spreadsheet to gain a clearer insight into your ticketing sales, commissions, and more. This provides powerful data analysis capabilities for business growth.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="gallery-section" class="container gallery-section">
+        <h2>A Glimpse of the Platform</h2>
+        <div class="gallery-grid">
+            <div class="screenshot-item">
+                <img src="D:/django/atatest/index-for github/Screenshot 2025-08-08 153057.png" alt="Screenshot of the main dashboard with an overview of sales and tasks">
+            </div>
+            <div class="screenshot-item">
+                <img src="D:/django/atatest/index-for github/Screenshot 2025-08-08 153523.png" alt="Screenshot of the ticket management interface with filtering options">
+            </div>
+            <div class="screenshot-item">
+                <img src="D:/django/atatest/index-for github/Screenshot 2025-08-08 153216.png" alt="Screenshot of the customer database with a detailed profile view">
+            </div>
+            <div class="screenshot-item">
+                <img src="D:/django/atatest/index-for github/Screenshot 2025-08-08 153304.png" alt="Screenshot of the ticket management interface with filtering options">
+            </div>
+            <div class="screenshot-item">
+                <img src="D:/django/atatest/index-for github/Screenshot 2025-08-08 153412.png" alt="Screenshot of the ticket management interface with filtering options">
+            </div>
+            
+            
+        </div>
+    </section>
+
+    <section id="contact-section" class="cta-section">
+        <h2>Ready to Transform Your Agency?</h2>
+        <p>This platform is a flexible template that can be enhanced and refined to align perfectly with your unique workflow and business needs.</p>
+        <a href="mailto:yisakor17@gmail.com" class="cta-button">Contact me at yisakor17@gmail.com for a Personalized Demo</a>
+    </section>
+    
+    <footer class="footer">
+        <p>Developed by Eng. Yisakor Amanuel</p>
+        <p>Contact: +2917817405 | yisakor17@gmail.com</p>
+    </footer>
+
+</body>
+</html>
